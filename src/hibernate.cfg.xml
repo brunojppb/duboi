@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Configuração da conexão com o banco MySQL e dialeto -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="connection.datasource">java:jboss/datasources/MySQLDS</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<mapping class="com.duboi.web.models.Cliente" />
+		<mapping class="com.duboi.web.models.Loja" />
+		<mapping class="com.duboi.web.models.Terceirizado" />
+		<mapping class="com.duboi.web.models.Produto" />
+		<mapping class="com.duboi.web.models.Pedido" />
+		<mapping class="com.duboi.web.models.PedidoProduto" />
+		<mapping class="com.duboi.web.models.Pagamento" />
+	</session-factory>
+</hibernate-configuration>

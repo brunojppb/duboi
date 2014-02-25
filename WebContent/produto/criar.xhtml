@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+	<h:outputScript library="js" name="jquery.js" />
+	<style>
+		.ativo{
+			display: block;
+		}
+		.inativo{
+			display: none;
+		}
+	</style>
+</h:head> 
+<body> 
+	<h:form prependId="false">
+		<h:inputHidden value="#{produtoBean.produto.id}" />
+		<h:outputLabel value="Selecione o produto:" />
+		<h:selectOneMenu value="#{produtoBean.produto.nome}" id="nomeProduto" >
+			<f:selectItem itemLabel="escolha" itemValue="--escolha--" noSelectionOption="true"/>
+			<f:selectItem id="leite" itemLabel="leite" itemValue="Leite"/>
+			<f:selectItem id="queijo" itemLabel="queijo" itemValue="Queijo"/>
+		</h:selectOneMenu> <br />
+		<h:outputLabel value="Selecione o tipo:" />
+		<h:selectOneMenu value="#{produtoBean.produto.tipo}" id="tipoLeite" styleClass="inativo">
+			<f:selectItem id="A" itemLabel="A" itemValue="A"/>
+			<f:selectItem id="B" itemLabel="B" itemValue="B"/>
+		</h:selectOneMenu>
+		<h:selectOneMenu value="#{produtoBean.produto.tipo}" id="tipoQueijo" styleClass="inativo">
+			<f:selectItem id="mozarela" itemLabel="mozarela" itemValue="mozarela"/>
+			<f:selectItem id="prato" itemLabel="prato" itemValue="prato"/>
+			<f:selectItem id="ricota" itemLabel="ricota" itemValue="ricota"/>
+			<f:selectItem id="coalho" itemLabel="coalho" itemValue="coalho"/>
+		</h:selectOneMenu>
+		<br />
+		<h:outputLabel value="Preço para nossas lojas:" />
+		<h:inputText value="#{produtoBean.produto.precoLoja}" />
+		<br />
+		<h:outputLabel value="Preço para terceirizados:" />
+		<h:inputText value="#{produtoBean.produto.precoTerceiro}" />
+		<h:commandButton value="Salvar" action="#{produtoBean.salvar()}" 
+			onclick="if(!confirm('Todos os dados estao corretos?')) return false;"/>
+	</h:form>
+	
+	<script>
+		$(function(){
+			//alert("ok");
+			$("#nomeProduto").change(function(){
+				var valorSelecionado = $("#nomeProduto option:selected").val();
+				if(valorSelecionado == "Leite"){
+					$("#tipoLeite").removeClass("inativo");
+					$("#tipoLeite").addClass("ativo");
+					$("#tipoQueijo").removeClass("ativo");
+					$("#tipoQueijo").addClass("inativo");
+				}
+				else if(valorSelecionado == "Queijo"){
+					$("#tipoQueijo").addClass("ativo");
+					$("#tipoQueijo").removeClass("inativo");
+					$("#tipoLeite").addClass("inativo");
+					$("#tipoLeite").removeClass("ativo");		
+				}
+				else{
+					$("#tipoQueijo").removeClass("ativo");
+					$("#tipoQueijo").addClass("inativo");
+					$("#tipoLeite").addClass("inativo");
+					$("#tipoLeite").removeClass("ativo");		
+				}
+			});
+		});
+		
+	</script>
+</body> 
+</html>

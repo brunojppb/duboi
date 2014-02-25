@@ -3,8 +3,10 @@ package com.duboi.web.models;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -17,7 +19,7 @@ public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	private String nome;
@@ -25,18 +27,10 @@ public class Produto implements Serializable{
 	private double precoLoja;
 	private double precoTerceiro;
 	
-	@OneToMany(mappedBy="produto")
+	@OneToMany(mappedBy="produto", cascade=CascadeType.ALL)
 	private List<PedidoProduto> pedidos;
 	
 	public Produto(){}
-	
-	public Produto(String nome, String tipo, double precoLoja, double precoTerceiro){
-		this.nome = nome;
-		this.tipo = tipo;
-		this.precoLoja = precoLoja;
-		this.precoTerceiro = precoTerceiro;
-		
-	}
 	
 	public Integer getId() {
 		return id;

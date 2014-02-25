@@ -1,5 +1,7 @@
 package com.duboi.web.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -8,15 +10,20 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @IdClass(PedidoProdutoId.class)
-public class PedidoProduto {
+public class PedidoProduto implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@ManyToOne
+	@ManyToOne(targetEntity=Pedido.class)
 	@JoinColumn(name="pedido_id")
 	private Pedido pedido;
 	
 	@Id
-	@ManyToOne
+	@ManyToOne(targetEntity=Produto.class)
 	@JoinColumn(name="produto_id")
 	private Produto produto;
 	
