@@ -25,14 +25,16 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Cliente cliente;
 	
-	@OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="pedido", cascade=CascadeType.PERSIST)
 	private List<PedidoProduto> produtos;
 	
 	@OneToOne
 	private Pagamento pagamento;
+	
+	private boolean status;
 	
 	public Pedido(){}
 	
@@ -87,5 +89,12 @@ public class Pedido implements Serializable{
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
 	}
-	
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 }

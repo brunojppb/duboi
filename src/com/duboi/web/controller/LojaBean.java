@@ -36,6 +36,5 @@ public class LojaBean implements Serializable{
 
 	public void setLoja(Loja loja) {
 		this.loja = loja;
-	}	
-	
+	}		
 }

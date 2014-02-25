@@ -27,7 +27,7 @@ public class Produto implements Serializable{
 	private double precoLoja;
 	private double precoTerceiro;
 	
-	@OneToMany(mappedBy="produto", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="produto", cascade=CascadeType.PERSIST)
 	private List<PedidoProduto> pedidos;
 	
 	public Produto(){}

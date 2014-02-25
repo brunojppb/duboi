@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inicio::#index.html" NAME="output"
+    PATH="/index.html" TARGET="rules:#index.html" TITLE="inicio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastrarLoja::#publico#loja#criar.xhtml"
+    NAME="output1" PATH="/publico/loja/criar.xhtml"
+    TARGET="rules:#publico#loja#criar.xhtml" TITLE="cadastrarLoja" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarProduto::#publico#produto#criar.xhtml" NAME="output2"
+    PATH="/publico/produto/criar.xhtml"
+    TARGET="rules:#publico#produto#criar.xhtml" TITLE="cadastrarProduto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.html" PATH="/index.html"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#publico#loja#criar.xhtml"
+  PATH="/publico/loja/criar.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#publico#produto#criar.xhtml"
+  PATH="/publico/produto/criar.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

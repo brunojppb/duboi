@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<ui:composition template="/templates/base.xhtml">
+	<ui:define name="corpo">
+		<div class="row">
+			<div class="col-md-12" style="text-align: center">
+				<h4>Cadastro de Loja</h4>
+			</div>
+		</div>
+		<div class="row" style="text-align: center">
+		<div class="col-md-12">
+			<h:form>
+				<h:inputHidden value="#{lojaBean.loja.id}" />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome:" />
+					<h:inputText value="#{lojaBean.loja.nome}" />
+					<h:outputLabel value="Email:" />
+					<h:inputText value="#{lojaBean.loja.email}" />
+					<h:outputLabel value="cnpj:" />
+					<h:inputText value="#{lojaBean.loja.cnpj}" />
+					<h:outputLabel value="Endereco:" />
+					<h:inputText value="#{lojaBean.loja.endereco}" />
+					<h:commandButton value="salvar" action="#{lojaBean.salvar()}" styleClass="btn btn-primary"/>
+				</h:panelGrid>
+			</h:form>
+		</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<ui:composition template="/templates/base.xhtml">
+	<ui:define name="corpo">
+	<h:form prependId="false">
+	<h:inputHidden value="#{produtoBean.produto.id}" />
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Selecione o produto:" />
+			<h:selectOneMenu value="#{produtoBean.produto.nome}" id="nomeProduto" >
+				<f:selectItem itemLabel="escolha" itemValue="--escolha--" noSelectionOption="true"/>
+				<f:selectItem itemLabel="leite" itemValue="Leite"/>
+				<f:selectItem itemLabel="queijo" itemValue="Queijo"/>
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Selecione o tipo:" />
+			<h:selectOneMenu value="#{produtoBean.produto.tipo}" id="tipo">
+				
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Preço para nossas lojas:" />
+			<h:inputText value="#{produtoBean.produto.precoLoja}" />
+			
+			<h:outputLabel value="Preço para terceirizados:" />
+			<h:inputText value="#{produtoBean.produto.precoTerceiro}" />
+			
+			<h:commandButton value="Salvar" action="#{produtoBean.salvar()}" 
+				onclick="if(!confirm('Todos os dados estao corretos?')) return false;" styleClass="btn btn-primary"/>
+		</h:panelGrid>
+	</h:form>
+	
+	<script>
+		$(function(){
+			$("#nomeProduto").change(function(){
+				var select = $("#tipo"); 
+				var tiposLeite = new Array("A", "B");
+				var tiposQueijo = new Array("Mozarela", "Prato", "Ricota", "Coalho");
+				var valorSelecionado = $("#nomeProduto option:selected").val();
+				if(valorSelecionado == "Leite"){
+					select.empty();
+					$.each(tiposLeite, function(indice, valor){
+						select.append($('<option/>', {
+							value: valor,
+							text: valor
+						}));
+					});
+				}else{
+					select.empty();
+					$.each(tiposQueijo, function(indice, valor){
+						select.append($('<option/>', {
+							value: valor,
+							text: valor
+						}));
+					});
+				}
+			});
+		});
+		
+	</script>
+</ui:define>
+</ui:composition>
+</html>
